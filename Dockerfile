@@ -1,17 +1,19 @@
-# Build stage
+# ===== BUILD =====
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-COPY . ./
+COPY . .
 RUN dotnet restore
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/publish
 
-# Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# ===== RUN =====
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
-COPY --from=build /app/out .
 
-ENV ASPNETCORE_URLS=http://+:8080
-EXPOSE 8080
+COPY --from=build /app/publish ./
 
-ENTRYPOINT ["dotnet", "VendasApi.dll"]
+# Render costuma injetar PORT (muitas vezes 10000)
+ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT:-10000}
+EXPOSE 10000
+
+CMD ["dotnet", "VendasApi.dll"]
