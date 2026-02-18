@@ -8,17 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.11" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
-
-    <!-- PostgreSQL driver (Render) -->
-    <PackageReference Include="Npgsql" Version="8.0.6" />
-
-    <!-- Swagger -->
+    <PackageReference Include="Npgsql" Version="8.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
-
-    <!-- Só faz sentido se realmente vais rodar como Windows Service (em Windows). No Render não precisa. -->
-    <!-- <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0" /> -->
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-// Swagger (sem Microsoft.OpenApi.Models)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
